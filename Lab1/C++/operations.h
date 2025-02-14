@@ -1,6 +1,4 @@
 #pragma once
-#ifndef OPERATIONS_H
-#define OPERATIONS_H
 
 #include <string>
 class Operations {
@@ -15,5 +13,3 @@ class Operations {
         int stringLength();
         std::string sortAsc();
     };
-
-#endif
