@@ -13,7 +13,7 @@ namespace Lab1
 
         if (!lines.IsLowercaseLatin())
         {
-            Console.WriteLine("yo, your line should have only lowercased latin symbols ykr");
+            Console.WriteLine("your line should have only lowercased latin symbols");
             return;
         }
 
