@@ -9,7 +9,7 @@ namespace Lab2
 
         public Line()
         {
-            value = "nothen";
+            value = "";
         }
 
         public Line(string input)
