@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Lab2
+namespace Lab3
 {
     public class Line
     {
@@ -9,7 +9,7 @@ namespace Lab2
 
         public Line()
         {
-            value = "nothen";
+            value = "";
         }
 
         public Line(string input)
@@ -17,12 +17,12 @@ namespace Lab2
             value = input;
         }
 
-        public Line(Line copied)
+        public Line(Line copiedObj)
         {
-            value = copied.value;
+            value = copiedObj.value;
         }
 
-        public bool IsLowercaseLatin()
+        public bool IsUppercaseLatin()
         {
             return value.All(c => c >= 'A' && c <= 'Z');
         }
@@ -37,10 +37,22 @@ namespace Lab2
             return value.Length;
         }
 
-        public string SortAscending()
+        public void DeleteEvenChars(string input)
         {
-            value = new string(value.OrderBy(c => c).ToArray());
-            return value;
+            string result = "";
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    result += input[i];
+                }
+            }
+            value = result;
+        }
+
+        public static Line operator +(Line a, Line b)
+        {
+            return new Line(a.GetValue() + b.GetValue());
         }
 
         ~Line()
