@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/furenzoku/Desktop/shit/oop/Object-Oriented-Programming/Lab2/C++",
-      "program": "c:/Users/furenzoku/Desktop/shit/oop/Object-Oriented-Programming/Lab2/C++/build/Debug/outDebug",
+      "cwd": "c:/Users/furenzoku/Desktop/shit/oop/Object-Oriented-Programming/Lab3/C++",
+      "program": "c:/Users/furenzoku/Desktop/shit/oop/Object-Oriented-Programming/Lab3/C++/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
