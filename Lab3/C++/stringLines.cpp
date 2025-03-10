@@ -12,10 +12,10 @@ Lines::Lines(std::string input)
     text = input;
 }
 
-Lines::Lines(const Lines &copied)
-{
-    text = copied.text;
-}
+// Lines::Lines(const Lines &copied)
+// {
+//     text = copied.text;
+// }
 
 bool Lines::isValidString(std::string input)
 {
@@ -41,7 +41,7 @@ size_t Lines::stringLength()
 
 Lines Lines::operator+(const Lines& a)
 {
-    std::string result = (text + other.text);
+    std::string result = (text + a.text);
     return result;
 }
 

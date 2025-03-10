@@ -10,7 +10,7 @@ private:
 public:
     Lines();
     Lines(std::string input);
-    Lines(const Lines &copied);
+    // Lines(const Lines &copied);
 
     std::string getText();
     static bool isValidString(std::string input);
