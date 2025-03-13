@@ -4,18 +4,18 @@
 
 Lines::Lines()
 {
-    text = "default";
+    value = "default";
 }
 
-Lines::Lines(std::string input)
+Lines::Lines(std::string input) 
 {
-    text = input;
+    value = input;
 }
 
-// Lines::Lines(const Lines &copied)
-// {
-//     text = copied.text;
-// }
+Lines::Lines(const Lines &copied)
+{
+    value = copied.value;
+}
 
 bool Lines::isValidString(std::string input)
 {
@@ -31,21 +31,35 @@ bool Lines::isValidString(std::string input)
 
 std::string Lines::getText()
 {
-    return text;
+    return value;
 }
 
 size_t Lines::stringLength()
 {
-    return text.length();
+    return value.length();
 }
 
-Lines Lines::operator+(const Lines& a)
+
+Lines Lines::operator/(const size_t delimiter) const
 {
-    std::string result = (text + a.text);
-    return result;
+    std::string newValue = "";
+    for (size_t i = 0; i < value.length(); i++)
+    {
+        if (i % delimiter == 0)
+        {
+            newValue += value[i];
+        }
+    }
+    return Lines(newValue);
 }
 
-Lines::~Lines()
+Lines Lines::operator+(const Lines &other) const
 {
-    std::cout << "\033[36m>> destructor called" << std::endl;
+    std::string result = value + other.value;
+    return Lines(result);
 }
+
+// Lines::~Lines()
+// {
+//     std::cout << "\033[36m>> destructor called" << std::endl;
+// }

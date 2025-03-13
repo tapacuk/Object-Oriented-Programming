@@ -24,7 +24,8 @@ int main()
         std::cout << "error in R3 string: should contain only uppercased latin chars" << std::endl;
         return 0;
     }
-
+ 
+    secondLine = secondLine / 2;
     firstLine = secondLine + thirdLine;
 
     if (firstLine.stringLength() > 0) {

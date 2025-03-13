@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 
 namespace Lab3
 {
@@ -27,7 +26,8 @@ namespace Lab3
                 return;
             }
 
-            secondLine.DeleteEvenChars(R2);
+            // secondLine.DeleteEvenChars(R2);
+            secondLine = secondLine / 2;
             firstLine = secondLine + thirdLine;
 
             if (firstLine.GetLength() > 0)

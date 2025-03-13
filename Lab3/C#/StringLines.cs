@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 
 namespace Lab3
 {
@@ -9,7 +8,7 @@ namespace Lab3
 
         public Line()
         {
-            value = "";
+            value = "DEFAULT";
         }
 
         public Line(string input)
@@ -37,27 +36,41 @@ namespace Lab3
             return value.Length;
         }
 
-        public void DeleteEvenChars(string input)
-        {
-            string result = "";
-            for (int i = 0; i < input.Length; i++)
-            {
-                if (i % 2 != 0)
-                {
-                    result += input[i];
-                }
-            }
-            value = result;
-        }
 
         public static Line operator +(Line a, Line b)
         {
             return new Line(a.GetValue() + b.GetValue());
         }
 
-        ~Line()
+        public static Line operator /(Line s, int delimiter)
         {
-            Console.WriteLine("object destroyed");
+            string newValue = "";
+            for (int i = 0; i < s.value.Length; i++)
+            {
+                if (i % delimiter == 0)
+                {
+                    newValue += s.value[i];
+                }
+            }
+            return new Line(newValue);
         }
+
+        // public void DeleteEvenChars(string input)
+        // {
+        //     string result = "";
+        //     for (int i = 0; i < input.Length; i++)
+        //     {
+        //         if (i % 2 != 0)
+        //         {
+        //             result += input[i];
+        //         }
+        //     }
+        //     value = result;
+        // }
+
+        // ~Line()
+        // {
+        //     Console.WriteLine("object destroyed");
+        // }
     }
 }
