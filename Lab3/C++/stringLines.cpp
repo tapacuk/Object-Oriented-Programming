@@ -4,7 +4,7 @@
 
 Lines::Lines()
 {
-    value = "default";
+    value = "DEFAULT";
 }
 
 Lines::Lines(std::string input) 
