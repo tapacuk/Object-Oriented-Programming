@@ -13,6 +13,5 @@ namespace Lab
         {
             value = value.Replace("#", "!!");
         }
-
     }
 }
