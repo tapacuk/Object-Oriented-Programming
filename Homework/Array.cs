@@ -34,14 +34,14 @@ class Array
 
     private long CalculateProduct()
     {
-        long mul = 1;
+        long result = 1;
         for (int i = 0; i < arr.GetLength(0); i++)
         {
             for (int j = 0; j < arr.GetLength(1); j++)
             {
-                mul *= arr[i, j];
+                result *= arr[i, j];
             }
         }
-        return mul;
+        return result;
     }
 }
