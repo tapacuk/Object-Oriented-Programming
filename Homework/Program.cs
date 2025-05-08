@@ -6,7 +6,6 @@ namespace HomeWork
     {
         static void Main(string[] args) 
         {
-            // Create an instance of the Array class and test its methods
             int[,] arr = {
                 { 0, 7, 2, 0 },
                 { 2, 0, 1, 2 },
