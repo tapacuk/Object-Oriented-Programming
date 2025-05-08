@@ -6,6 +6,7 @@ namespace HomeWork
     {
         static void Main(string[] args) 
         {
+            // .
             int[,] arr = {
                 { 0, 7, 2, 0 },
                 { 2, 0, 1, 2 },
