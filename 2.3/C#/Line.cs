@@ -16,7 +16,7 @@ namespace Lab
 
         public char GetFirstChar()
         {
-             if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
             {
                 return '\0'; // nullchar
             }
