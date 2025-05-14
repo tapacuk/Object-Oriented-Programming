@@ -8,7 +8,7 @@ namespace Lab
         static void Main(string[] args)
         {
             LineContainer line = new LineContainer();
-
+            // hellooooo
             while (true)
             {
                 Console.WriteLine("- - - menu - - -");
