@@ -1,0 +1,74 @@
+[
+  {
+    "Title": "CLANNAD",
+    "Developer": "Key",
+    "Genre": "Drama",
+    "Subgenre": "Nakige"
+  },
+  {
+    "Title": "Subarashiki Hibi ~Furenzoku Sonzai~",
+    "Developer": "KeroQ",
+    "Genre": "Horror",
+    "Subgenre": "Denpa"
+  },
+  {
+    "Title": "Tsui no Sora",
+    "Developer": "KeroQ",
+    "Genre": "Horror",
+    "Subgenre": "Denpa"
+  },
+  {
+    "Title": "Jisatsu no Tame no 101 no Houhou",
+    "Developer": "Duke",
+    "Genre": "Horror",
+    "Subgenre": "Denpa"
+  },
+  {
+    "Title": "Moekan",
+    "Developer": "KeroQ",
+    "Genre": "Comedy",
+    "Subgenre": "Ecchi"
+  },
+  {
+    "Title": "Nijuuei",
+    "Developer": "KeroQ",
+    "Genre": "Horror",
+    "Subgenre": "Chuunige"
+  },
+  {
+    "Title": "H2O -FOOTPRINTS IN THE SAND-",
+    "Developer": "Makura",
+    "Genre": "Slice of Life",
+    "Subgenre": "Nakige"
+  },
+  {
+    "Title": "Sakura no Uta -Sakura no Mori no Ue o Mau-",
+    "Developer": "Makura",
+    "Genre": "Drama",
+    "Subgenre": "Kamige"
+  },
+  {
+    "Title": "STEINS;GATE",
+    "Developer": "NITRO PLUS",
+    "Genre": "Science Fiction",
+    "Subgenre": "Kamige"
+  },
+  {
+    "Title": "CHAOS;HEAD",
+    "Developer": "NITRO PLUS",
+    "Genre": "Horror",
+    "Subgenre": "Denpa"
+  },
+  {
+    "Title": "Kimi to Kanojo to Kanojo no Koi.",
+    "Developer": "NITRO PLUS",
+    "Genre": "Romance",
+    "Subgenre": "Denpa"
+  },
+  {
+    "Title": "Sayonara o Oshiete ~comment te dire adieu~",
+    "Developer": "CRAFTWORK",
+    "Genre": "Horror",
+    "Subgenre": "Denpa"
+  }
+]
