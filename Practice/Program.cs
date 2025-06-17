@@ -51,6 +51,7 @@ namespace SteamLibraryFilter
 
                         Console.Clear();
                         Console.WriteLine("Game added and saved.\n\n");
+                        WriteExit();
                         break;
 
                     case "3":
