@@ -1,8 +1,0 @@
-﻿Student Ivan Ivanenko
-{ "firstname": "Ivan",
-"lastname": "Ivanenko",
-"gender": "male",};
-Joiner Mykola Sverdinov
-{ "firstname": "Mykola",
-"lastname": "Sverdinov",
-"gender": "male"};
