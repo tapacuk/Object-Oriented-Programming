@@ -1,0 +1,8 @@
+﻿Photographer Oleksandr Yaramiy
+{ "firstname": "Oleksandr",
+"lastname": "Yaramiy",
+"gender": "male"};
+Photographer Nikita Kiryuu
+{ "firstname": "Nikita",
+"lastname": "Kiryuu",
+"gender": "male"};
