@@ -20,12 +20,20 @@ namespace Domain
 
         public void MultiplyBigNumber()
         {
-            throw new NotImplementedException(); // temp
+            Console.WriteLine($"{name} {surname} counting big numbers...");
         }
 
         public void Study()
         {
-            //
+            Random random = new Random();
+            int chance = random.Next(0, 100);
+
+            if (chance < 50)
+                Console.WriteLine($"{name} studying hard...");
+            else if (chance > 50)
+                Console.WriteLine($"{name} studying...");
+            else
+                Console.WriteLine($"{name} not studying.. at all?...");
         }
 
         public string[] FormatToObj()

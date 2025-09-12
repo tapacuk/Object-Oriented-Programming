@@ -11,7 +11,7 @@ namespace Domain
 
         public void ConstructFurniture()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"{name} {surname} constructed furniture!");
         }
 
         public string[] FormatToObj()

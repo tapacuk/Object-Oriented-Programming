@@ -11,7 +11,7 @@ namespace Domain
 
         public void TakePhoto()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"{name} {surname} makes some photos!");
         }
 
         public string[] FormatToObj()

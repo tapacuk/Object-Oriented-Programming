@@ -1,8 +1,7 @@
-using System.Runtime.CompilerServices;
-using System.Runtime.ConstrainedExecution;
 using FileLogic;
 using Domain;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace StudList
 {
@@ -56,28 +55,30 @@ namespace StudList
         {
             string name, surname, gender, occupation;
 
-            do
-            {
-                Console.Write("name: ");
-                name = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(name))
-                    Console.WriteLine("name can't be empty!");
-            } while (string.IsNullOrWhiteSpace(name));
+            Console.Write("name: ");
+            name = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(name))
+                while (string.IsNullOrWhiteSpace(name))
+                {
+                    Console.Write("name can't be empty! enter name: ");
+                    name = Console.ReadLine();
+                }
 
-            do
-            {
-                Console.Write("surname: ");
-                surname = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(surname))
-                    Console.WriteLine("surname can't be empty!");
-            } while (string.IsNullOrWhiteSpace(surname));
+            Console.Write("surname: ");
+            surname = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(surname))
+                while (string.IsNullOrWhiteSpace(name))
+                {
+                    Console.WriteLine("surname can't be empty! enter surname: "); ;
+                    surname = Console.ReadLine();
+                }
+
 
             Console.Write("gender: ");
             gender = Console.ReadLine();
 
             if (gender.ToLower() is not ("male" or "female"))
                 gender = "N/A";
-
 
             Console.Write("occupation (Student, Photographer or Joiner): ");
             occupation = Console.ReadLine().ToLower();
@@ -91,17 +92,33 @@ namespace StudList
 
             if (occupation == "student")
             {
+                Console.Write("student's residence (city): ");
+                string residence = Console.ReadLine();
+
                 Console.Write("student's course (number): ");
                 string course = Console.ReadLine();
 
                 Console.Write("student's ID: ");
                 string studentID = Console.ReadLine();
 
-                Console.Write("student's residence (city): ");
-                string residence = Console.ReadLine();
+                string patternStudID = @"^\d{6}$";
+                if (!Regex.IsMatch(studentID, patternStudID))
+                    while (!Regex.IsMatch(studentID, patternStudID))
+                    {
+                        Console.Write("incorrect format. (eg: 0123456). please try again: ");
+                        studentID = Console.ReadLine();
+                    }
 
                 Console.Write("student's Grade Book ID: ");
                 string gradeBookID = Console.ReadLine();
+
+                string patternGrade = @"^[A-Z]{2}\d{5}$";
+                if (!Regex.IsMatch(gradeBookID, patternGrade))
+                    while (!Regex.IsMatch(gradeBookID, patternGrade))
+                    {
+                        Console.Write("incorrect format. (eg: AB12345). please try again: ");
+                        gradeBookID = Console.ReadLine();
+                    }
 
                 Student student = new Student(name, surname, gender, residence, course, studentID, gradeBookID);
                 fm.WriteFile(student.FormatToObj(), "Students");
