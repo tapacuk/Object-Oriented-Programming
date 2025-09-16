@@ -14,4 +14,10 @@ namespace Domain
     {
         void MultiplyBigNumber();
     }
+
+    public interface IEntityStringOutput
+    {
+        public string[] FormatToObj();
+        public string FormatToText();
+    }
 }

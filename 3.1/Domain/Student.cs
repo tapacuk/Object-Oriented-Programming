@@ -1,6 +1,6 @@
 namespace Domain
 {
-    public class Student : Person, IMultiplyBigNumbers
+    public class Student : Person, IMultiplyBigNumbers, IEntityStringOutput
     {
         public string? course { get; set; }
         public string? studentID { get; set; }

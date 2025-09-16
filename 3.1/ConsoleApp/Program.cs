@@ -7,9 +7,7 @@ namespace StudList
     {
         static void Main(string[] args)
         {
-            FileManager fm = new FileManager();
-
-            ConsoleMenu cm = new ConsoleMenu(fm);
+            ConsoleMenu cm = new ConsoleMenu();
             cm.ShowMenu();
         }
     }

@@ -1,6 +1,6 @@
 namespace Domain
 {
-    public class Photographer : Person, IPhotographer
+    public class Photographer : Person, IPhotographer, IEntityStringOutput
     {
         public Photographer(string name, string surname, string gender)
         {

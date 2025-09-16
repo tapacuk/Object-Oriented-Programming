@@ -1,6 +1,6 @@
 namespace Domain
 {
-    public class Joiner : Person, IJoiner
+    public class Joiner : Person, IJoiner, IEntityStringOutput
     {
         public Joiner(string name, string surname, string gender)
         {
