@@ -6,21 +6,13 @@ namespace CollectionsLab
 {
     public class CollectionsDemo
     {
-        public static void Run()
+        public static void Run(StringData[] array)
         {
-            StringData[] array = {
-            new StringData("Hello", 2, true),
-            new StringData("World", 1, false),
-            new StringData("CSharp", 3, true),
-            new StringData("Tree", 1, true),
-            new StringData("Encrypt", 2, false),
-            new StringData("Data", 1, true)
-            };
-
             Console.WriteLine("array");
             foreach (var x in array) Console.WriteLine(x);
 
             List<StringData> list = new List<StringData>(array);
+
             list.Add(new StringData("Extra", 2, true));
             list.RemoveAt(1);
             list[0] = new StringData("Updated", 3, true);

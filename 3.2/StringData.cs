@@ -6,7 +6,7 @@ namespace CollectionsLab
     {
         public string Value { get; set; }
         public int Length => Value.Length;
-        public int Key { get; set; }
+        private int Key { get; set; }
         public bool DirectionUp { get; set; }
 
         public StringData(string value, int key, bool directionUp)
@@ -31,7 +31,7 @@ namespace CollectionsLab
             return $"\"{Value}\" (length: {Length}, key: {Key}, {(DirectionUp ? "+" : "-")})";
         }
 
-        public int CompareTo(StringData other)
+        public int CompareTo(StringData? other)
         {
             if (other == null) return 1;
             return string.Compare(Value, other.Value, StringComparison.Ordinal);

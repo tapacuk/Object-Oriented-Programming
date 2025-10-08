@@ -6,10 +6,6 @@ namespace CollectionsLab
     {
         public static void Main()
         {
-            CollectionsDemo.Run();
-
-            Console.WriteLine("\n\nbinary tree\n");
-            BinaryTree<StringData> tree = new BinaryTree<StringData>();
             StringData[] array = {
             new StringData("Hello", 2, true),
             new StringData("World", 1, false),
@@ -19,6 +15,10 @@ namespace CollectionsLab
             new StringData("Name", 1, true)
             };
 
+            CollectionsDemo.Run(array);
+
+            Console.WriteLine("\n\nbinary tree\n");
+            BinaryTree<StringData> tree = new BinaryTree<StringData>();
             foreach (var x in array) tree.Insert(x);
 
             Console.WriteLine("preorder:");
