@@ -22,6 +22,18 @@ async function main() {
     file.deserializeJSON('data.json').map((s: any) => s.show())
   );
 
+  file.serializeXML(strings);
+  console.log(
+    '\nXML:',
+    (await file.deserializeXML()).map((s: any) => s.show())
+  );
+
+  file.serializeBinary(strings);
+  console.log(
+    '\nBin:',
+    file.deserializeBinary().map((s: any) => s.show())
+  );
+
   file.serializeCustom(strings);
   console.log(
     '\nTXT:',

@@ -22,4 +22,8 @@ export class Line {
   show = () => {
     return this.value;
   };
+
+  toObject = () => {
+    return { value: this.value };
+  };
 }
