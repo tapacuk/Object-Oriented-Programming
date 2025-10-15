@@ -1,5 +1,8 @@
+import { Menu } from './menu';
+
 function main() {
-  return;
+  const menu = new Menu();
+  menu.mainMenu();
 }
 
 main();
