@@ -1,9 +1,12 @@
-import { StudentEntity } from '../entity.class';
+import { StudentEntity } from '../studentEntity.class';
 import type { IDataProvider } from '../dataProvider.interface';
 import { promises as fs } from 'fs';
+import type { StudentModel } from '../../../bll-service/src';
 
-export class CustomProvider implements IDataProvider<StudentEntity> {
-  async read(filePath: string): Promise<StudentEntity[]> {
+export class CustomProvider<T> implements IDataProvider<StudentModel> {
+  async read(
+    filePath: string = './data/students.txt'
+  ): Promise<StudentModel[]> {
     try {
       const content = await fs.readFile(filePath, 'utf-8');
       const lines = content
@@ -13,7 +16,6 @@ export class CustomProvider implements IDataProvider<StudentEntity> {
 
       return lines.map((line) => {
         const [
-          id,
           lastName,
           firstName,
           course,
@@ -23,7 +25,6 @@ export class CustomProvider implements IDataProvider<StudentEntity> {
           recordBookNumber,
         ] = line.split('|');
         return Object.assign(new StudentEntity(), {
-          id,
           lastName,
           firstName,
           course: Number(course),
@@ -38,19 +39,22 @@ export class CustomProvider implements IDataProvider<StudentEntity> {
     }
   }
 
-  async write(filePath: string, items: StudentEntity[]): Promise<void> {
+  async write(
+    filePath: string = './data/students.txt',
+    items: StudentModel[]
+  ): Promise<void> {
     const lines = items.map(
       (s) =>
-        `${s.id}|${s.lastName}|${s.firstName}|${s.course ?? null}|${s.studentId}|${s.gender}|${s.city}|${s.recordBookNumber}`
+        `${s.lastName}|${s.firstName}|${s.course ?? null}|${s.studentId}|${s.gender}|${s.city}|${s.recordBookNumber}`
     );
     await fs.writeFile(filePath, lines.join('\n'), 'utf-8');
   }
 
-  async create(filePath: string): Promise<void> {
+  async create(filePath: string = './data/students.txt'): Promise<void> {
     await fs.writeFile(filePath, '', 'utf-8');
   }
 
-  async deleteFile(filePath: string): Promise<void> {
+  async deleteFile(filePath: string = './data/students.txt'): Promise<void> {
     await fs.unlink(filePath);
   }
 }

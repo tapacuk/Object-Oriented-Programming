@@ -1,7 +1,6 @@
 type Gender = 'male' | 'female';
 
 export class StudentEntity {
-  id: string | undefined;
   lastName: string | undefined;
   firstName: string | undefined;
   course: number | undefined;

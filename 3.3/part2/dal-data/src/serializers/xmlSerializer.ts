@@ -1,10 +1,13 @@
-import { StudentEntity } from '../entity.class';
+import { StudentEntity } from '../studentEntity.class';
 import type { IDataProvider } from '../dataProvider.interface';
 import { promises as fs } from 'fs';
 import { XMLParser, XMLBuilder } from 'fast-xml-parser';
+import type { StudentModel } from '../../../bll-service/src';
 
-export class XMLProvider implements IDataProvider<StudentEntity> {
-  async read(filePath: string): Promise<StudentEntity[]> {
+export class XMLProvider<T> implements IDataProvider<StudentModel> {
+  async read(
+    filePath: string = './data/students.xml'
+  ): Promise<StudentModel[]> {
     try {
       const xml = await fs.readFile(filePath, 'utf-8');
       const parser = new XMLParser({
@@ -26,7 +29,10 @@ export class XMLProvider implements IDataProvider<StudentEntity> {
     }
   }
 
-  async write(filePath: string, items: StudentEntity[]): Promise<void> {
+  async write(
+    filePath: string = './data/students.xml',
+    items: StudentModel[]
+  ): Promise<void> {
     const builder = new XMLBuilder({
       format: true,
       attributeNamePrefix: '@_',
@@ -46,13 +52,13 @@ export class XMLProvider implements IDataProvider<StudentEntity> {
     await fs.writeFile(filePath, xml, 'utf-8');
   }
 
-  async create(filePath: string): Promise<void> {
+  async create(filePath: string = './data/students.xml'): Promise<void> {
     const builder = new XMLBuilder({ format: true, attributeNamePrefix: '@_' });
     const xml = builder.build({ students: {} });
     await fs.writeFile(filePath, xml, 'utf-8');
   }
 
-  async deleteFile(filePath: string): Promise<void> {
+  async deleteFile(filePath: string = './data/students.xml'): Promise<void> {
     await fs.unlink(filePath);
   }
 }

@@ -1,3 +1,1 @@
-export const dalData = () => {
-  return;
-};
+export * from './entityContext';

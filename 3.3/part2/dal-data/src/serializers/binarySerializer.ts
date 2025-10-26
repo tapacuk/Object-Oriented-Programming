@@ -1,9 +1,12 @@
-import { StudentEntity } from '../entity.class';
+import { StudentEntity } from '../studentEntity.class';
 import type { IDataProvider } from '../dataProvider.interface';
 import { promises as fs } from 'fs';
+import type { StudentModel } from '../../../bll-service/src';
 
-export class BinaryProvider implements IDataProvider<StudentEntity> {
-  async read(filePath: string): Promise<StudentEntity[]> {
+export class BinaryProvider<T> implements IDataProvider<StudentModel> {
+  async read(
+    filePath: string = './data/students.bin'
+  ): Promise<StudentModel[]> {
     try {
       const buffer = await fs.readFile(filePath);
       const parsed: any[] = JSON.parse(buffer.toString('utf8'));
@@ -13,18 +16,21 @@ export class BinaryProvider implements IDataProvider<StudentEntity> {
     }
   }
 
-  async write(filePath: string, items: StudentEntity[]): Promise<void> {
+  async write(
+    filePath: string = './data/students.bin',
+    items: StudentModel[]
+  ): Promise<void> {
     const json = JSON.stringify(items, null, 2);
     const buffer = Buffer.from(json, 'utf8');
     await fs.writeFile(filePath, buffer);
   }
 
-  async create(filePath: string): Promise<void> {
+  async create(filePath: string = './data/students.bin'): Promise<void> {
     const buffer = Buffer.from('[]', 'utf8');
     await fs.writeFile(filePath, buffer);
   }
 
-  async deleteFile(filePath: string): Promise<void> {
+  async deleteFile(filePath: string = './data/students.bin'): Promise<void> {
     await fs.unlink(filePath);
   }
 }
