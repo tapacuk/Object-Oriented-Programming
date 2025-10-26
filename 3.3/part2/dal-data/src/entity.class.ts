@@ -1,4 +1,4 @@
-export type Gender = 'male' | 'female';
+type Gender = 'male' | 'female';
 
 export class StudentEntity {
   id: string | undefined;
