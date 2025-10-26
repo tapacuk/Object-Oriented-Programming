@@ -1,25 +1,29 @@
 import { StudentEntity } from '../entity.class';
-import type { IDataProvider } from './dataProvider.interface';
+import type { IDataProvider } from '../dataProvider.interface';
 import { promises as fs } from 'fs';
 import { XMLParser, XMLBuilder } from 'fast-xml-parser';
 
 export class XMLProvider implements IDataProvider<StudentEntity> {
   async read(filePath: string): Promise<StudentEntity[]> {
-    const xml = await fs.readFile(filePath, 'utf-8');
-    const parser = new XMLParser({
-      ignoreAttributes: false,
-      attributeNamePrefix: '@_',
-    });
-    const parsed = parser.parse(xml);
+    try {
+      const xml = await fs.readFile(filePath, 'utf-8');
+      const parser = new XMLParser({
+        ignoreAttributes: false,
+        attributeNamePrefix: '@_',
+      });
+      const parsed = parser.parse(xml);
 
-    const studentsNode = parsed?.students?.student;
+      const studentsNode = parsed?.students?.student;
 
-    const plainArray: any[] = (() => {
-      if (!studentsNode) return [];
-      return Array.isArray(studentsNode) ? studentsNode : [studentsNode];
-    })();
+      const plainArray: any[] = (() => {
+        if (!studentsNode) return [];
+        return Array.isArray(studentsNode) ? studentsNode : [studentsNode];
+      })();
 
-    return plainArray.map((o: any) => Object.assign(new StudentEntity(), o));
+      return plainArray.map((o: any) => Object.assign(new StudentEntity(), o));
+    } catch (err) {
+      return [];
+    }
   }
 
   async write(filePath: string, items: StudentEntity[]): Promise<void> {

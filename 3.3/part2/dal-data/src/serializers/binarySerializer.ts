@@ -1,12 +1,16 @@
 import { StudentEntity } from '../entity.class';
-import type { IDataProvider } from './dataProvider.interface';
+import type { IDataProvider } from '../dataProvider.interface';
 import { promises as fs } from 'fs';
 
 export class BinaryProvider implements IDataProvider<StudentEntity> {
   async read(filePath: string): Promise<StudentEntity[]> {
-    const buffer = await fs.readFile(filePath);
-    const parsed: any[] = JSON.parse(buffer.toString('utf8'));
-    return parsed.map((o: any) => Object.assign(new StudentEntity(), o));
+    try {
+      const buffer = await fs.readFile(filePath);
+      const parsed: any[] = JSON.parse(buffer.toString('utf8'));
+      return parsed.map((o: any) => Object.assign(new StudentEntity(), o));
+    } catch (err) {
+      return [];
+    }
   }
 
   async write(filePath: string, items: StudentEntity[]): Promise<void> {

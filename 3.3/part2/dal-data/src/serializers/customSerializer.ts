@@ -1,37 +1,41 @@
 import { StudentEntity } from '../entity.class';
-import type { IDataProvider } from './dataProvider.interface';
+import type { IDataProvider } from '../dataProvider.interface';
 import { promises as fs } from 'fs';
 
 export class CustomProvider implements IDataProvider<StudentEntity> {
   async read(filePath: string): Promise<StudentEntity[]> {
-    const content = await fs.readFile(filePath, 'utf-8');
-    const lines = content
-      .split('\n')
-      .map((line) => line.trim())
-      .filter((line) => line.length > 0);
+    try {
+      const content = await fs.readFile(filePath, 'utf-8');
+      const lines = content
+        .split('\n')
+        .map((line) => line.trim())
+        .filter((line) => line.length > 0);
 
-    return lines.map((line) => {
-      const [
-        id,
-        lastName,
-        firstName,
-        course,
-        studentId,
-        gender,
-        city,
-        recordBookNumber,
-      ] = line.split('|');
-      return Object.assign(new StudentEntity(), {
-        id,
-        lastName,
-        firstName,
-        course: Number(course),
-        studentId,
-        gender,
-        city,
-        recordBookNumber,
+      return lines.map((line) => {
+        const [
+          id,
+          lastName,
+          firstName,
+          course,
+          studentId,
+          gender,
+          city,
+          recordBookNumber,
+        ] = line.split('|');
+        return Object.assign(new StudentEntity(), {
+          id,
+          lastName,
+          firstName,
+          course: Number(course),
+          studentId,
+          gender,
+          city,
+          recordBookNumber,
+        });
       });
-    });
+    } catch (err) {
+      return [];
+    }
   }
 
   async write(filePath: string, items: StudentEntity[]): Promise<void> {
