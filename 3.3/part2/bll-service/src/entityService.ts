@@ -37,7 +37,7 @@ export class StudentService implements IStudentService {
       (s) =>
         s.gender === 'female' &&
         s.course === 5 &&
-        s.city.toLowerCase() === 'київ'
+        s.city!.toLowerCase() === 'київ'
     ).length;
   }
 
