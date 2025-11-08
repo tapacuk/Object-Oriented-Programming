@@ -1,4 +1,4 @@
-import type { IPhoto } from './iPhoto.interface';
+import type { IPhoto } from './Photo.interface';
 import { StudentEntity } from './studentEntity.class';
 
 export class Photographer extends StudentEntity implements IPhoto {
