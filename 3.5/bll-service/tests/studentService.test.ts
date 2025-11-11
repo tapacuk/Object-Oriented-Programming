@@ -165,4 +165,124 @@ describe('StudentService', () => {
       `Студента з ID 888 не знайдено.`
     );
   });
+
+  test('should throw error when adding student with duplicate ID', () => {
+    const student = {
+      studentId: '1',
+      firstName: 'Oleh',
+      lastName: 'Zhuk',
+      gender: 'male',
+      course: 2,
+      city: 'Kyiv',
+      recordBookNumber: 'RB00001',
+    };
+    studentService.addStudent(student as StudentModel);
+    expect(() => studentService.addStudent(student as StudentModel)).toThrow(
+      `Студент з ID ${student.studentId} вже існує.`
+    );
+  });
+
+  test('should set default city and recordBookNumber when missing', () => {
+    const student = {
+      studentId: '2',
+      firstName: 'Nazar',
+      lastName: 'Tkachenko',
+      gender: 'male',
+      course: 3,
+      city: '',
+      recordBookNumber: '',
+    };
+    studentService.addStudent(student as StudentModel);
+    const added = studentService
+      .getAllStudents()
+      .find((s) => s.studentId === '2');
+    expect(added?.city).toBe('Unknown');
+    expect(added?.recordBookNumber).toBe('N/A');
+  });
+
+  test('should throw error for invalid course value', () => {
+    const student = {
+      studentId: '3',
+      firstName: 'Andrii',
+      lastName: 'Melnyk',
+      gender: 'male',
+      course: 7,
+      city: 'Kyiv',
+      recordBookNumber: 'RB123',
+    };
+    expect(() => studentService.addStudent(student as StudentModel)).toThrow(
+      'Некоректний курс студента: Допустимі значення: 1-6.'
+    );
+  });
+
+  test('should throw error for invalid gender value', () => {
+    const student = {
+      studentId: '4',
+      firstName: 'Tanya',
+      lastName: 'Koval',
+      gender: 'other',
+      course: 2,
+      city: 'Kyiv',
+      recordBookNumber: 'RB456',
+    } as unknown as StudentModel;
+    expect(() => studentService.addStudent(student)).toThrow(
+      "Некоректна стать студента: Допустимі значення: 'male', 'female '"
+    );
+  });
+
+  test('should add "(In hostel)" to Kyiv city only once', () => {
+    const student = {
+      studentId: '5',
+      firstName: 'Sergiy',
+      lastName: 'Bondar',
+      gender: 'male',
+      course: 4,
+      city: 'Kyiv',
+      recordBookNumber: 'RB789',
+    };
+    studentService.addStudent(student as StudentModel);
+    studentService.hostel('5');
+    studentService.hostel('5'); // друга спроба — "(In hostel)" вже є
+    const updated = studentService
+      .getAllStudents()
+      .find((s) => s.studentId === '5');
+    expect(updated?.city).toBe('Kyiv (In hostel)');
+  });
+
+  test('should return students matching predicate', () => {
+    const students = [
+      {
+        studentId: 'a1',
+        firstName: 'A',
+        lastName: 'A',
+        gender: 'male',
+        course: 3,
+        city: 'Lviv',
+        recordBookNumber: 'R1',
+      },
+      {
+        studentId: 'a2',
+        firstName: 'B',
+        lastName: 'B',
+        gender: 'female',
+        course: 3,
+        city: 'Kyiv',
+        recordBookNumber: 'R2',
+      },
+      {
+        studentId: 'a3',
+        firstName: 'C',
+        lastName: 'C',
+        gender: 'male',
+        course: 2,
+        city: 'Odesa',
+        recordBookNumber: 'R3',
+      },
+    ];
+    students.forEach((s) => studentService.addStudent(s as StudentModel));
+
+    const res = studentService.findStudentsByCondition((s) => s.course === 3);
+    expect(res).toHaveLength(2);
+    expect(res.map((r) => r.studentId).sort()).toEqual(['a1', 'a2'].sort());
+  });
 });
