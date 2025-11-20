@@ -1,0 +1,20 @@
+[
+  {
+    "lastName": "a",
+    "firstName": "a",
+    "course": null,
+    "studentId": "a",
+    "gender": "a",
+    "city": "a",
+    "recordBookNumber": "a"
+  },
+  {
+    "lastName": "b",
+    "firstName": "b",
+    "course": 5,
+    "studentId": "123",
+    "gender": "male",
+    "city": "Kyiv (In hostel)",
+    "recordBookNumber": "a"
+  }
+]
